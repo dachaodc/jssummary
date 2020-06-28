@@ -290,6 +290,35 @@ console.log(JSON.stringify(middleObj[0][0]));
 
 console.log('---------------递归----------------');
 
+// var nodes2 = [
+//     {id: 10, title: 'dw10', parentId: 4},
+//     {id: 2, title: 'dw2', parentId: 0},
+//     {id: 4, title: 'dw4', parentId: 2},
+//     {id: 12, title: 'dw12', parentId: 2},
+//     {id: 8, title: 'dw8', parentId: 4},
+//     {id: 16, title: 'dw16', parentId: 10},
+// ];
+//
+// // 线性数据转化为树。
+// function toTree(data, parentId) {
+//     var tree = [];
+//     var temp;
+//     for (var i = 0; i < data.length; i++) {
+//         if (data[i].parentId === parentId) {
+//             var obj = data[i];
+//             temp = toTree(data, data[i].id);
+//             if (temp.length > 0) {
+//                 obj.children = temp;
+//             }
+//             tree.push(obj);
+//         }
+//     }
+//     return tree;
+// }
+//
+// const dataArr = toTree(nodes2, 0);
+// console.log(JSON.stringify(dataArr));
+
 var nodes2 = [
     {id: 10, title: 'dw10', parentId: 4},
     {id: 2, title: 'dw2', parentId: 0},
@@ -297,27 +326,34 @@ var nodes2 = [
     {id: 12, title: 'dw12', parentId: 2},
     {id: 8, title: 'dw8', parentId: 4},
     {id: 16, title: 'dw16', parentId: 10},
+    {id: 100, title: 'dw100', parentId: 8},
+    {id: 101, title: 'dw101', parentId: 100},
+    {id: 102, title: 'dw101', parentId: 101}
 ];
 
-// 线性数据转化为树。
-function toTree(data, parentId) {
-    var tree = [];
-    var temp;
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].parentId === parentId) {
-            var obj = data[i];
-            temp = toTree(data, data[i].id);
-            if (temp.length > 0) {
-                obj.children = temp;
+function toTree(data, id) {
+    let tree = [];
+
+    console.log("执行几次？");
+
+    for (let i = 0; i < data.length; i++) {
+
+        if (data[i].parentId === id) {
+            let obj = data[i];
+
+            console.log("obj----->" + obj);
+
+            let tempObj = toTree(data, data[i].id);
+
+            console.log("tempObj----->" + tempObj);
+
+            if (tempObj.length > 0) {
+                obj.children = tempObj;
             }
             tree.push(obj);
         }
     }
-    return tree;
+    return tree
 }
 
-const dataArr = toTree(nodes2, 0);
-console.log(JSON.stringify(dataArr));
-
-
-
+console.log(JSON.stringify(toTree(nodes2, 0)));
