@@ -287,3 +287,37 @@ for (let i = nodes.length - 1; i >= 0; i--) {
 }
 
 console.log(JSON.stringify(middleObj[0][0]));
+
+console.log('---------------递归----------------');
+
+var nodes2 = [
+    {id: 10, title: 'dw10', parentId: 4},
+    {id: 2, title: 'dw2', parentId: 0},
+    {id: 4, title: 'dw4', parentId: 2},
+    {id: 12, title: 'dw12', parentId: 2},
+    {id: 8, title: 'dw8', parentId: 4},
+    {id: 16, title: 'dw16', parentId: 10},
+];
+
+// 线性数据转化为树。
+function toTree(data, parentId) {
+    var tree = [];
+    var temp;
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].parentId === parentId) {
+            var obj = data[i];
+            temp = toTree(data, data[i].id);
+            if (temp.length > 0) {
+                obj.children = temp;
+            }
+            tree.push(obj);
+        }
+    }
+    return tree;
+}
+
+const dataArr = toTree(nodes2, 0);
+console.log(JSON.stringify(dataArr));
+
+
+
