@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>css3过渡</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 50px auto;
+        }
+
+        .hover-transition {
+            transition: width 3s, height 3s, transform 5s;
+            -webkit-transition: width 3s, height 3s, transform 5s;
+            -o-transition: width 3s, height 3s, transform 5s;
+            -moz-transition: width 3s, height 3s, transform 5s;
+        }
+
+        .hover-transition:hover {
+            width: 200px;
+            height: 200px;
+            transform: rotate3d(360, 360, 360, 360deg);
+            -webkit-transform: rotate3d(360, 360, 360, 360deg);
+            -moz-transform: rotate3d(360, 360, 360, 360deg);
+            -ms-transform: rotate3d(360, 360, 360, 360deg);
+            -o-transform: rotate3d(360, 360, 360, 360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="hover-transition"></div>
+</body>
+</html>
