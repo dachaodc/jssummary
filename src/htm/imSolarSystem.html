@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>太阳系运行</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .solar-system {
+            width: 100%;
+            height: 100%;
+            background-color: deepskyblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sun {
+            width: 100px;
+            height: 100px;
+            background-color: darkorange;
+            border-radius: 50%;
+            box-shadow: 0 0 12px darkorange;
+            position: absolute;
+        }
+
+        .mercury-orbit {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 75px);
+        }
+
+        .mercury {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: red;
+            position: absolute;
+
+            animation: rotateMercuryAni 5s linear infinite;
+        }
+
+        @keyframes rotateMercuryAni {
+            0% {
+                transform: rotate(0deg) translate(75px);
+            }
+            100% {
+                transform: rotate(360deg) translate(75px);
+            }
+        }
+
+        @-webkit-keyframes rotateMercuryAni {
+            0% {
+                transform: rotate(0deg) translate(75px);
+            }
+            100% {
+                transform: rotate(360deg) translate(75px);
+            }
+        }
+
+        .venus-orbit {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 125px);
+        }
+
+        .venus {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: gold;
+            position: absolute;
+
+            animation: rotateVenusAni 5s linear infinite;
+        }
+
+        @keyframes rotateVenusAni {
+            0% {
+                transform: rotate(0deg) translate(125px);
+            }
+            100% {
+                transform: rotate(360deg) translate(125px);
+            }
+        }
+
+        @-webkit-keyframes rotateVenusAni {
+            0% {
+                transform: rotate(0deg) translate(125px);
+            }
+            100% {
+                transform: rotate(360deg) translate(125px);
+            }
+        }
+
+        .earth-orbit {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 150px);
+        }
+
+        .earth {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: lightskyblue;
+            position: absolute;
+
+            animation: rotateEarthAni 5s linear infinite;
+        }
+
+        @keyframes rotateEarthAni {
+            0% {
+                transform: rotate(0deg) translate(150px);
+            }
+            100% {
+                transform: rotate(360deg) translate(150px);
+            }
+        }
+
+        @-webkit-keyframes rotateEarthAni {
+            0% {
+                transform: rotate(0deg) translate(150px);
+            }
+            100% {
+                transform: rotate(360deg) translate(150px);
+            }
+        }
+
+        .mars-orbit {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 175px);
+        }
+
+        .mars {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: darkorange;
+            position: absolute;
+
+            animation: rotateMarsAni 5s linear infinite;
+        }
+
+        @keyframes rotateMarsAni {
+            0% {
+                transform: rotate(0deg) translate(175px);
+            }
+            100% {
+                transform: rotate(360deg) translate(175px);
+            }
+        }
+
+        @-webkit-keyframes rotateMarsAni {
+            0% {
+                transform: rotate(0deg) translate(175px);
+            }
+            100% {
+                transform: rotate(360deg) translate(175px);
+            }
+        }
+
+        .jupiter-orbit {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 200px);
+        }
+
+        .jupiter {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: burlywood;
+            position: absolute;
+
+            animation: rotateJupiterAni 5s linear infinite;
+        }
+
+        @keyframes rotateJupiterAni {
+            0% {
+                transform: rotate(0deg) translate(200px);
+            }
+            100% {
+                transform: rotate(360deg) translate(200px);
+            }
+        }
+
+        @-webkit-keyframes rotateJupiterAni {
+            0% {
+                transform: rotate(0deg) translate(200px);
+            }
+            100% {
+                transform: rotate(360deg) translate(200px);
+            }
+        }
+
+        .saturn-orbit {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 225px);
+        }
+
+        .saturn {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: darkkhaki;
+            position: absolute;
+
+            animation: rotateSaturnAni 5s linear infinite;
+        }
+
+        @keyframes rotateSaturnAni {
+            0% {
+                transform: rotate(0deg) translate(225px);
+            }
+            100% {
+                transform: rotate(360deg) translate(225px);
+            }
+        }
+
+        @-webkit-keyframes rotateSaturnAni {
+            0% {
+                transform: rotate(0deg) translate(225px);
+            }
+            100% {
+                transform: rotate(360deg) translate(225px);
+            }
+        }
+
+        .uranus-orbit {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 250px);
+        }
+
+        .uranus {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: darkolivegreen;
+            position: absolute;
+
+            animation: rotateUranusAni 5s linear infinite;
+        }
+
+        @keyframes rotateUranusAni {
+            0% {
+                transform: rotate(0deg) translate(250px);
+            }
+            100% {
+                transform: rotate(360deg) translate(250px);
+            }
+        }
+
+        @-webkit-keyframes rotateUranusAni {
+            0% {
+                transform: rotate(0deg) translate(250px);
+            }
+            100% {
+                transform: rotate(360deg) translate(250px);
+            }
+        }
+
+        .neptune-orbit {
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 275px);
+        }
+
+        .neptune {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: darkblue;
+            position: absolute;
+
+            animation: rotateNeptuneAni 5s linear infinite;
+        }
+
+        @keyframes rotateNeptuneAni {
+            0% {
+                transform: rotate(0deg) translate(275px);
+            }
+            100% {
+                transform: rotate(360deg) translate(275px);
+            }
+        }
+
+        @-webkit-keyframes rotateNeptuneAni {
+            0% {
+                transform: rotate(0deg) translate(275px);
+            }
+            100% {
+                transform: rotate(360deg) translate(275px);
+            }
+        }
+
+        .pluto-orbit {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 1px dashed gray;
+            position: absolute;
+            left: calc(50% - 300px);
+        }
+
+        .pluto {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+
+            animation: rotatePlutoAni 5s linear infinite;
+        }
+
+        @keyframes rotatePlutoAni {
+            0% {
+                transform: rotate(0deg) translate(300px);
+            }
+            100% {
+                transform: rotate(360deg) translate(300px);
+            }
+        }
+
+        @-webkit-keyframes rotatePlutoAni {
+            0% {
+                transform: rotate(0deg) translate(300px);
+            }
+            100% {
+                transform: rotate(360deg) translate(300px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="solar-system">
+    <!--太阳-->
+    <div class="sun"></div>
+    <!--水星-->
+    <div class="mercury-orbit"></div>
+    <div class="mercury"></div>
+    <!--金星-->
+    <div class="venus-orbit"></div>
+    <div class="venus"></div>
+    <!--地球-->
+    <div class="earth-orbit"></div>
+    <div class="earth"></div>
+    <!--火星-->
+    <div class="mars-orbit"></div>
+    <div class="mars"></div>
+    <!--木星-->
+    <div class="jupiter-orbit"></div>
+    <div class="jupiter"></div>
+    <!--土星-->
+    <div class="saturn-orbit"></div>
+    <div class="saturn"></div>
+    <!--天王星-->
+    <div class="uranus-orbit"></div>
+    <div class="uranus"></div>
+    <!--海王星-->
+    <div class="neptune-orbit"></div>
+    <div class="neptune"></div>
+    <!--冥王星-->
+    <div class="pluto-orbit"></div>
+    <div class="pluto"></div>
+</div>
+</body>
+</html>

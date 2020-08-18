@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>css3动画</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px lightblue;
+            background-color: lightcoral;
+        }
+
+        .animation {
+            animation: myAnimation 5s;
+            transition: all 3s;
+        }
+
+        @keyframes myAnimation {
+            0% {
+                background: rgba(0, 0, 0, 0.1)
+            }
+            10% {
+                background: rgba(0, 0, 0, 0.2)
+            }
+            20% {
+                background: rgba(0, 0, 0, 0.3)
+            }
+            30% {
+                background: rgba(0, 0, 0, 0.4)
+            }
+            40% {
+                background: rgba(0, 0, 0, 0.5)
+            }
+            50% {
+                background: rgba(0, 0, 0, 0.6)
+            }
+            60% {
+                background: rgba(0, 0, 0, 0.7)
+            }
+            70% {
+                background: rgba(0, 0, 0, 0.8)
+            }
+            80% {
+                background: rgba(0, 0, 0, 0.9)
+            }
+            90% {
+                background: rgba(0, 0, 0, 1)
+            }
+            100% {
+                background: red
+            }
+        }
+
+        .animation:hover {
+            width: 200px;
+            height: 200px;
+            transform: rotate(360deg);
+            background: blue
+        }
+
+    </style>
+</head>
+<body>
+<div class="animation"></div>
+</body>
+</html>
