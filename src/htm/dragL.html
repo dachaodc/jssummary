@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="idDiv1" style="width: 300px; height: 200px; border: 1px solid red; margin: 0 auto" ondrop="drop(event)"
+     ondragover="allowDrop(event)">
+    <img src="./img1.png" id="idImg1" style="width: 100px; height: 100px; margin: 20px auto" draggable="true"
+         ondragstart="drag(event)">
+    <img src="./img2.png" id="idImg2" style="width: 100px; height: 100px; margin: 20px auto" draggable="true"
+         ondragstart="drag(event)">
+</div>
+<div id="idDiv2" style="width: 300px; height: 200px; border: 1px solid red; margin: 0 auto" ondrop="drop(event)"
+     ondragover="allowDrop(event)">
+</div>
+</body>
+<script>
+    function drag(e) {
+        console.log(e.target.id);
+        e.dataTransfer.setData("Text", e.target.id);
+        console.log(e.dataTransfer);
+    }
+
+    function drop(e) {
+        e.preventDefault();
+        var data = e.dataTransfer.getData("Text");
+        console.log(data);
+        e.target.appendChild(document.getElementById(data));
+    }
+
+    function allowDrop(e) {
+        e.preventDefault();
+    }
+
+</script>
+</html>

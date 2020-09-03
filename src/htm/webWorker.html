@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>web worker</title>
+
+    <style>
+        .result {
+            width: 300px;
+            height: 100px;
+            margin: 50px auto;
+            line-height: 100px;
+            color: red;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .click-button {
+            width: 200px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: lightseagreen;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 9px 4px 0 lightgray
+        }
+
+        .click-button:active {
+            margin: 104px auto;
+            box-shadow: 0 5px 4px 0 black;
+        }
+    </style>
+</head>
+<body>
+<div id="result" class="result"></div>
+<div class="click-button" onclick="startWorker()">点击开始</div>
+<div class="click-button" onclick="stopWorker()">点击结束</div>
+<script>
+    var w;
+
+    function startWorker() {
+        if (typeof (Worker) !== "undefined") {
+            if (typeof (w) == "undefined") {
+                w = new Worker("workers.js");
+            }
+            w.onmessage = function (event) {
+                document.getElementById("result").innerHTML = event.data;
+            };
+        } else {
+            document.getElementById("result").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+        }
+    }
+
+    function stopWorker() {
+        w.terminate();
+        w = undefined;
+    }
+
+</script>
+</body>
+</html>

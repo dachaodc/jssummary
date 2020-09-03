@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SSE</title>
+</head>
+<body>
+<h1>获取服务端更新数据</h1>
+<div class="result"></div>
+<script>
+    if (typeof EventSource !== 'undefined') {
+        var es = new EventSource('https://www.runoob.com/try/demo_source/demo_sse.php');
+        es.onmessage = function (event) {
+            document.getElementById("result").innerHTML += event.data + "<br>";
+        };
+
+    } else {
+        console.log('你的浏览器不支持SSE');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <style>
+        div.container {
+            width: 300px;
+        }
+
+        div.box1 {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box; /* Firefox */
+            width: 150px;
+            border: 10px solid;
+            float: left;
+            background-color: red;
+            margin: 10px;
+            padding: 10px
+        }
+
+        div.box2 {
+            box-sizing: content-box;
+            -moz-box-sizing: content-box; /* Firefox */
+            width: 150px;
+            border: 10px solid;
+            float: left;
+            background-color: red;
+            margin: 10px;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box1">这个 div 占据了左边的一半。</div>
+    <div class="box2">这个 div 占据了右边的一半。</div>
+</div>
+<script>
+    window.onload = function () {
+        var node = document.getElementsByClassName('box1');
+        console.log(node);
+    }
+</script>
+</body>
+</html>
