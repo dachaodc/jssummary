@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFC</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        .wrapper {
+            overflow: hidden;
+        }
+
+        .box1 {
+            height: 20px;
+            margin: 10px 0;
+            background-color: green;
+        }
+
+        .box2 {
+            height: 20px;
+            margin: 20px 0;
+            background-color: green;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper">
+        <div class="box1"></div>
+    </div>
+    <div class="box2"></div>
+</div>
+</body>
+</html>

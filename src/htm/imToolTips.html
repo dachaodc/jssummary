@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tool tips</title>
+</head>
+<style type="text/css">
+
+    body {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .tooltip {
+        position: relative;
+    }
+
+    .tooltip-text {
+        display: none;
+        position: absolute;
+        top: -5px;
+        background-color: black;
+        opacity: 0.8;
+        color: white;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    .tooltip:hover .tooltip-text {
+        display: inline;
+    }
+
+</style>
+<body>
+<div>
+    <div class="tooltip">鼠标移动过来(右侧)
+        <span class="tooltip-text">我显示出来了</span>
+    </div>
+    <div class="tooltip">鼠标移动过来(左侧)
+        <span class="tooltip-text">我显示出来了</span>
+    </div>
+</div>
+<script type="text/javascript"></script>
+</body>
+</html>
