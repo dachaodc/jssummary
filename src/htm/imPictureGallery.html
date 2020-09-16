@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片廊</title>
+    <style type="text/css">
+        .responsive {
+            padding: 0 6px;
+            float: left;
+        }
+
+        div.img {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+        div.img:hover {
+            border: 1px solid #777;
+        }
+
+        div.img img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .clearFix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="//static.runoob.com/images/demo/demo1.jpg">
+                <img src="//static.runoob.com/images/demo/demo1.jpg" alt="图片文本描述" width="300" height="200">
+            </a>
+            <div class="desc">这里添加图片文本描述</div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="//static.runoob.com/images/demo/demo1.jpg">
+                <img src="//static.runoob.com/images/demo/demo1.jpg" alt="图片文本描述" width="300" height="200">
+            </a>
+            <div class="desc">这里添加图片文本描述</div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="//static.runoob.com/images/demo/demo1.jpg">
+                <img src="//static.runoob.com/images/demo/demo1.jpg" alt="图片文本描述" width="300" height="200">
+            </a>
+            <div class="desc">这里添加图片文本描述</div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="//static.runoob.com/images/demo/demo1.jpg">
+                <img src="//static.runoob.com/images/demo/demo1.jpg" alt="图片文本描述" width="300" height="200">
+            </a>
+            <div class="desc">这里添加图片文本描述</div>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="clearFix"></div>
+    </div>
+</div>
+<script>
+
+</script>
+</body>
+</html>
