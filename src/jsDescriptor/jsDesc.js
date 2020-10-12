@@ -89,6 +89,62 @@ obj6.foo = 'b';
 console.log(obj6.foo); // 'a'
 
 
+console.log('---------------------obj7--------------------------');
+
+var proto7 = Object.defineProperty({}, 'foo', {
+    value: 'a',
+    writable: false
+});
+
+var obj7 = Object.create(proto7);
+Object.defineProperty(obj7, 'foo', {
+    value: 'b',
+    writable: true
+});
+
+console.log(obj7.foo); // "b"
+
+console.log('---------------------obj8------------------------');
+
+var obj8 = {};
+
+Object.defineProperty(obj8, 'x', {
+    value: 123,
+    enumerable: false
+});
+
+console.log(obj8.x);// 123
+
+for (var key in obj8) {
+    console.log(key);
+}
+// undefined
+
+console.log(obj8);
+console.log(Object.keys(obj8));  // []
+console.log(JSON.stringify(obj8)); // "{}"
+
+
+console.log('-----------------------obj9---------------------------');
+
+var obj9 = Object.defineProperty({}, 'p', {
+    value: 1,
+    writable: false,
+    enumerable: false,
+    configurable: false  // configurable为false时，value、writable、enumerable和configurable都不能被修改了
+});
+
+Object.defineProperty(obj9, 'p', {value: 2});
+// TypeError: Cannot redefine property: p
+
+Object.defineProperty(obj9, 'p', {writable: true});
+// TypeError: Cannot redefine property: p
+
+Object.defineProperty(obj9, 'p', {enumerable: true});
+// TypeError: Cannot redefine property: p
+
+Object.defineProperty(obj9, 'p', {configurable: true});
+// TypeError: Cannot redefine property: p
 
 
 
