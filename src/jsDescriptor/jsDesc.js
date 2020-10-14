@@ -134,19 +134,126 @@ var obj9 = Object.defineProperty({}, 'p', {
     configurable: false  // configurable为false时，value、writable、enumerable和configurable都不能被修改了
 });
 
-Object.defineProperty(obj9, 'p', {value: 2});
+// Object.defineProperty(obj9, 'p', {value: 2});
 // TypeError: Cannot redefine property: p
 
-Object.defineProperty(obj9, 'p', {writable: true});
+// Object.defineProperty(obj9, 'p', {writable: true});
 // TypeError: Cannot redefine property: p
 
-Object.defineProperty(obj9, 'p', {enumerable: true});
+// Object.defineProperty(obj9, 'p', {enumerable: true});
 // TypeError: Cannot redefine property: p
 
-Object.defineProperty(obj9, 'p', {configurable: true});
+// Object.defineProperty(obj9, 'p', {configurable: true});
 // TypeError: Cannot redefine property: p
 
+console.log('-----------------------obj10---------------------------');
 
+var obj10 = Object.defineProperty({}, 'p', {
+    get: function () {
+        return 'getter';
+    },
+    set: function (value) {
+        console.log('setter: ' + value);
+        return 'setter: ' + value
+    }
+});
+
+console.log(obj10.p); // "getter"
+obj10.p = 123; // "setter: 123"
+console.log(obj10.p); // "getter"
+
+console.log('-----------------------obj11---------------------------');
+
+// 写法二
+var obj11 = {
+    get p() {
+        return 'getter';
+    },
+    set p(value) {
+        console.log('setter: ' + value);
+    }
+};
+
+console.log(obj11.p); // "getter"
+obj11.p = 123; // "setter: 123"
+console.log(obj11.p); // "getter"
+
+console.log('-----------------------obj12---------------------------');
+
+var obj12 = {
+    $n: 5,
+    get next() {
+        return this.$n++
+    },
+    set next(n) {
+        if (n >= this.$n) this.$n = n;
+        else throw new Error('新的值必须大于当前值');
+    }
+};
+
+obj12.next; // 5
+
+obj12.next = 10;
+obj12.next; // 10
+
+// obj12.next = 5;
+// Uncaught Error: 新的值必须大于当前值
+
+console.log('--------------------------obj13------------------------------');
+
+var extend = function (to, from) {
+    for (var property in from) {
+        to[property] = from[property];
+    }
+
+    return to;
+};
+
+console.log(extend({}, {
+    a: 1
+}));
+
+console.log(extend({}, {
+    get a() {
+        return 123
+    }
+}));
+
+console.log('-------------------obj14-----------------------');
+
+var extend2 = function (to, from) {
+    for (var property in from) {
+        if (!from.hasOwnProperty(property)) continue;
+        Object.defineProperty(
+            to,
+            property,
+            Object.getOwnPropertyDescriptor(from, property)
+        );
+    }
+
+    return to;
+};
+
+console.log(extend2({}, {
+    get a() {
+        return 1
+    }
+}));
+// { get a(){ return 1 } })
+
+
+console.log('----------------------------obj15----------------------------');
+
+var obj15 = new Object();
+Object.preventExtensions(obj15);
+
+Object.defineProperty(obj15, 'p', {
+    value: 'hello'
+});
+// TypeError: Cannot define property:p, object is not extensible.
+
+obj15.p = 1;
+console.log(obj15.p); // undefined
 
 
 
