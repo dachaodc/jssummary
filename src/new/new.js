@@ -150,6 +150,15 @@ const newObj = _newObj(Person, 'zyc', '28');
 console.log(newObj);
 
 
+// <input type="text" name="age" size=3 onChange="validate(this, 18, 99);">
+//     <script>
+//     function validate(obj, lowval, hival){
+//         if ((obj.value < lowval) || (obj.value > hival))
+//             console.log('Invalid Value!');
+//     }
+//     </script>
+
+
 
 
 
