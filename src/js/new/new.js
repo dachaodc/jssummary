@@ -165,17 +165,17 @@ function _new(constructor, params) {
     constructor = paramsArr.shift();
     let context = Object.create(constructor.prototype);
     const result = constructor.apply(context, paramsArr);
-    return context;
+    return (typeof result === 'object' && result != null) ? result : context;
 };
 
-function Person() {
-    this.name = 'dc';
-    this.age = '29';
+function Person(pa) {
+    this.name = pa.name;
+    this.age = pa.age;
 }
 
 const pa = {
-    name: 'zyc',
-    age: '28'
+    name: 'dc',
+    age: '29'
 };
 
 const dc = _new(Person, pa);
