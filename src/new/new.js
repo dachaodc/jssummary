@@ -137,17 +137,17 @@ console.log('------------------------');
 // console.log(actor);
 
 
-function _newObj(constructor, pram) {
-    let arrPrams = [].slice.call(arguments);
-    let cons = arrPrams.shift();
-    let context = Object.create(cons.prototype);
-    let obj = cons.apply(context, arrPrams);
-    return (typeof obj === 'object' && obj != null) ? obj : context
-}
-
-const newObj = _newObj(Person, 'zyc', '28');
-
-console.log(newObj);
+// function _newObj(constructor, pram) {
+//     let arrPrams = [].slice.call(arguments);
+//     let cons = arrPrams.shift();
+//     let context = Object.create(cons.prototype);
+//     let obj = cons.apply(context, arrPrams);
+//     return (typeof obj === 'object' && obj != null) ? obj : context
+// }
+//
+// const newObj = _newObj(Person, 'zyc', '28');
+//
+// console.log(newObj);
 
 
 // <input type="text" name="age" size=3 onChange="validate(this, 18, 99);">
@@ -159,6 +159,13 @@ console.log(newObj);
 //     </script>
 
 
+// 2021 02 02
+function _new(constructor, params) {
+    let paramsArr = [].slice.call(arguments);
+    constructor = paramsArr.shift();
+
+
+};
 
 
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>var</title>
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+            for (var i = 0; i < aLi.length; i++) {　　/*将var改为let*/
+                aLi[i].onclick = function () {
+                    alert(i);　　　　/*单击任何标签都输出4*/
+                }
+            }
+
+            function varTest() {
+                var x = 31;
+                if (true) {
+                    var x = 71;  // same variable!
+                    console.log(x);  // 71
+                }
+                console.log(x);  // 71
+            }
+
+            function letTest() {
+                let x = 31;
+                if (true) {
+                    let x = 71;  // different variable
+                    console.log(x);  // 71
+                }
+                console.log(x);  // 31
+            }
+
+            varTest();
+            letTest();
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>
