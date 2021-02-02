@@ -32,7 +32,7 @@
 // console.log(objectFactory(arguments));
 
 
-console.log('-----------------------------------');
+// console.log('-----------------------------------');
 
 // Array.prototype.testSlice = function () {
 //     var start = 0;
@@ -66,30 +66,30 @@ console.log('-----------------------------------');
 // const person1 = new Person('Tom', 20);
 // console.log(person1);
 
-
-function myNew(constrc, ...args) {
-    const obj = {}; // 1. 创建一个空对象
-    obj.__proto__ = constrc.prototype; // 2. 将obj的[[prototype]]属性指向构造函数的原型对象
-    // 或者使用自带方法：Object.setPrototypeOf(obj, constrc.prototype)
-    const result = constrc.apply(obj, args); // 3.将constrc执行的上下文this绑定到obj上，并执行
-    return result instanceof Object ? result : obj;  //4. 如果构造函数返回的是对象，则使用构造函数执行的结果。否则，返回新创建的对象
-}
-
-// 使用的例子：
-function Person(name, age) {
-    this.name = name;
-    this.age = age;
-}
-
-const person1 = myNew(Person, 'Tom', 20);
-console.log(person1);  // Person {name: "Tom", age: 20}
-
-console.log(person1.__proto__);
-console.log(Person.prototype);
-console.log(Person.prototype === person1.__proto__);
-console.log(Person.prototype.constructor === Person);
-
-console.log('------------------------');
+//
+// function myNew(constrc, ...args) {
+//     const obj = {}; // 1. 创建一个空对象
+//     obj.__proto__ = constrc.prototype; // 2. 将obj的[[prototype]]属性指向构造函数的原型对象
+//     // 或者使用自带方法：Object.setPrototypeOf(obj, constrc.prototype)
+//     const result = constrc.apply(obj, args); // 3.将constrc执行的上下文this绑定到obj上，并执行
+//     return result instanceof Object ? result : obj;  //4. 如果构造函数返回的是对象，则使用构造函数执行的结果。否则，返回新创建的对象
+// }
+//
+// // 使用的例子：
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+//
+// const person1 = myNew(Person, 'Tom', 20);
+// console.log(person1);  // Person {name: "Tom", age: 20}
+//
+// console.log(person1.__proto__);
+// console.log(Person.prototype);
+// console.log(Person.prototype === person1.__proto__);
+// console.log(Person.prototype.constructor === Person);
+//
+// console.log('------------------------');
 
 // function Person() {
 //     this.name;
@@ -163,9 +163,23 @@ console.log('------------------------');
 function _new(constructor, params) {
     let paramsArr = [].slice.call(arguments);
     constructor = paramsArr.shift();
-
-
+    let context = Object.create(constructor.prototype);
+    const result = constructor.apply(context, paramsArr);
+    return context;
 };
+
+function Person() {
+    this.name = 'dc';
+    this.age = '29';
+}
+
+const pa = {
+    name: 'zyc',
+    age: '28'
+};
+
+const dc = _new(Person, pa);
+console.log(dc);
 
 
 

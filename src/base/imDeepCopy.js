@@ -112,7 +112,7 @@ function repeat(n) {
     this.pro
     if (!str) return;
     let arr = str.split('');
-    for (let i = 0； i < n; i ++) {
+    for (let i = 0; i < n; i ++) {
         for (let j = 0; j < arr.length; j ++) {
             console.log(arr[j])
         }
