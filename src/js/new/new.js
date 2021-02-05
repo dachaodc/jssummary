@@ -160,29 +160,52 @@
 
 
 // 2021 02 02
+// function _new(constructor, params) {
+//     let paramsArr = [].slice.call(arguments);
+//     constructor = paramsArr.shift();
+//     let context = Object.create(constructor.prototype);
+//     // const result = constructor.apply(context, paramsArr);
+//     const result = ;
+//     return (typeof result === 'object' && result != null) ? result : context;
+// };
+//
+// function Person(pa) {
+//     this.name = pa.name;
+//     this.age = pa.age;
+// }
+//
+// const pa = {
+//     name: 'dc',
+//     age: '29'
+// };
+//
+// const dc = _new(Person, pa);
+// console.log(dc);
+
+
+// 2021 02 05 再练
 function _new(constructor, params) {
     let paramsArr = [].slice.call(arguments);
     constructor = paramsArr.shift();
     let context = Object.create(constructor.prototype);
-    const result = constructor.apply(context, paramsArr);
-    return (typeof result === 'object' && result != null) ? result : context;
-};
+    let result = constructor.apply(context, paramsArr);
 
-function Person(pa) {
-    this.name = pa.name;
-    this.age = pa.age;
+    return result && typeof result === 'object' ? result : context;
+
 }
 
-const pa = {
-    name: 'dc',
-    age: '29'
-};
+function Dc(p) {
+    this.name = p.name;
+    this.age = p.age;
+}
 
-const dc = _new(Person, pa);
+const params = {
+    name : 'zyc',
+    age : 29
+}
+
+const dc = _new(Dc, params);
 console.log(dc);
-
-
-
 
 
 

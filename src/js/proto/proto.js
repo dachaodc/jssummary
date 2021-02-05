@@ -21,9 +21,12 @@ const value1 = {};
 console.log(Array.isArray(value));
 console.log(Array.isArray(value1));
 
-if(!Array.isArray){
-    Array.isArray = function(arg){
+if(!Array.isArrayCo){
+    Array.isArrayCo = function(arg){
         return Object.prototype.toString.call(arg)==='[object Array]'
     }
-
 }
+
+console.log(Array.isArrayCo(value));
+
+

@@ -66,3 +66,4 @@ Function.prototype.myCall = function (context) {
     delete context.fn;
     return result;
 };
+
