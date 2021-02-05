@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--(内联样式）Inline style > （内部样式）Internal style sheet >（外部样式）External style sheet > 浏览器默认样式-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>css优先级</title>
+    <!--  内部样式与外部样式的优先级取决于--内部样式与外部样式谁在后面，谁后加载，谁的优先级高 -->
+    <link rel="stylesheet" type="text/css" href="cssLevel.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .root {
+            font-size: 16px;
+        }
+
+        p {
+            color: black;
+            font-size: 1rem;
+        }
+
+        /* 同一个class里面的样式优先级取决于样式内容谁在后面，谁的优先级高 */
+        .p11 {
+            color: #4CAF50;
+        }
+        .p1 {
+            color: red;
+        }
+
+
+
+        .p2 {
+            color: green;
+        }
+
+
+
+        .p3 {
+            color: blue;
+        }
+
+
+
+        .p44 {
+            color: brown;
+        }
+
+        .p4 {
+            color: bisque;
+        }
+
+    </style>
+</head>
+<body>
+<div class="root">
+    <div>
+        <h3>我是标题1</h3>
+        <p>我是段落</p>
+        <p class="p11 p1">我是段落1</p>
+        <p id="p2" class="p2">我是段落2</p>
+        <p id="p3" class="p3 p3" style="color: blue">我是段落3</p>
+        <p class="p4 p44">我是段落4</p>
+    </div>
+<!--    <div>-->
+<!--        <h3>我是标题2</h3>-->
+<!--        <p>我是段落2</p>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <p>我是段落3</p>-->
+<!--    </div>-->
+</div>
+</body>
+</html>
