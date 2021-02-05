@@ -19,13 +19,17 @@ console.log(typeof new Date());
 function f() {}
 console.log(typeof f);
 
-console.log(typeof new RegExp());
+console.log(typeof /^\d$/);
+
+console.log(typeof (typeof null));
 
 console.log(typeof typeof null);
 
 console.log(typeof typeof undefined);
 
 console.log(typeof typeof typeof null);
+
+console.log(typeof 0 === 'number');
 
 // object
 // undefined
@@ -40,5 +44,6 @@ console.log(typeof typeof typeof null);
 // string
 // string
 // string
+// true
 
 
