@@ -41,12 +41,54 @@
         }
 
         // 3 3 3
-        debugger
         for (var i = 0; i < 3; i++) {
             document.body.addEventListener('click', function () {
                 console.log(i);
             });
         }
+
+        // undefined
+        // var a = 1;
+        // function fn() {
+        //     console.log(a);
+        //     var a = 2;
+        // }
+        // fn();
+
+        // Uncaught ReferenceError: Cannot access 'b' before initialization
+        // let b = 1;
+        // function fnb() {
+        //     console.log(b);
+        //     let b = 2;
+        // }
+        // fnb();
+
+        // 20
+        // var count = 10;
+        // function a() {
+        //     return count + 10;
+        // }
+        //
+        // function b() {
+        //     var count = 20;
+        //     return a();
+        // }
+        //
+        // console.log(b());
+
+        // 错 2
+        Function.prototype.a = () => alert(1);
+        Object.prototype.b = () => alert(2);
+        function A() {};
+        var a = new A();
+        a.a();
+        console.log(a);
+        a.b();
+
+
+
+
+
     };
 </script>
 </html>
