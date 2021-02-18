@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>node节点</title>
+</head>
+<body>
+    <div id="ele">
+        <span id="s1" lang="zh-cn">
+        </span>
+    </div>
+</body>
+<script type="text/javascript">
+    function exe() {
+        let ele = document.getElementById('ele');
+        console.log(ele.childElementCount);
+        // children:只包含元素节点
+        // 0: span#s1
+        // childNodes:包含所有类型的节点  元素节点 文本节点(隐藏的)
+        // 0: text
+        // 1: span#s1
+        // 2: text
+        console.log(ele.childNodes);
+        console.log(ele.children);
+        let child = ele.children;
+        for (let i = 0; i < child.length; i ++) {
+            console.log(child[i].tagName)
+        }
+        let childNodes = ele.childNodes;
+        for (let i = 0; i < childNodes.length; i ++) {
+            console.log(childNodes[i].tagName)
+        }
+    }
+    exe();
+</script>
+</html>

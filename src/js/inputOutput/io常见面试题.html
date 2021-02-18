@@ -78,6 +78,16 @@
             return a();
         }
 
+        let objj = {
+            count: 50,
+            dcdc: function dcdc() {
+            return  this.count;
+        },
+        };
+
+        var dcdcdc = objj.dcdc;
+        console.log(dcdcdc());
+        console.log(objj.dcdc());
         console.log(b());
 
         // 错 2
