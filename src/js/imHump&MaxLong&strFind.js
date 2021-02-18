@@ -56,7 +56,7 @@ for (var i = 0; i < arr3.length; i++) {
         maxchar = arr3[i]
     }
 }
-console.log(maxchar, maxlength);  //FFFFFFFFFFFF 1
+console.log(maxchar, maxlength);  //FFFFFFFFFFFF 12
 
 // 字符串查找
 // 请使用最基本的遍历来实现判断字符串 a 是否被包含在字符串 b 中，并返回第一次出现的位置（找不到返回 -1）。
@@ -93,7 +93,7 @@ console.log(maxchar, maxlength);  //FFFFFFFFFFFF 1
 
 
 a = '34';
-b = '111111234567'; // 返回 2
+b = '111111234567'; // 返回 7
 
 console.log(judgeContain());
 
