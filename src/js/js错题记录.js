@@ -45,14 +45,14 @@ console.log( 0 == NaN ); // false
 // 2.null 只和 undefined 比较时为 true， 反过来 undefined 也仅和 null 比较为 true，没有第二个
 // 3.0 除了和 false 比较为 true，还有空字符串 ''" 和空数组 []比较也为true
 // 4.空字符串 '' 除了和 false 比较为 true，还有一个数字 0
-console.log('-------------js里的6种假值输出---------------');
+console.log('-------------js里的6种假值输出--false----判断是否为假值---------');
 console.log(new Boolean(false));
 console.log(new Boolean(null));
 console.log(new Boolean(undefined));
 console.log(new Boolean(''));
 console.log(new Boolean(0));
 console.log(new Boolean(NaN));
-console.log('-------------js里的非6种假值输出---------------');
+console.log('-------------js里的非6种假值输出----true-----------');
 console.log(new Boolean({}));
 console.log(new Boolean([]));
 
