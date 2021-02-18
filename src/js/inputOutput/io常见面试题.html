@@ -66,38 +66,62 @@
         // fnb();
 
         // 20
-        var count = 10;
-        function a() {
-            return count + 10;
+        // var count = 10;
+        // function a() {
+        //     return count + 10;
+        // }
+        //
+        // function b() {
+        //     var count = 20;
+        //     console.log(this);
+        //     console.log(this.count);
+        //     return a();
+        // }
+        //
+        // let objj = {
+        //     count: 50,
+        //     dcdc: function dcdc() {
+        //     return  this.count;
+        // },
+        // };
+        //
+        // var dcdcdc = objj.dcdc;
+        // console.log(dcdcdc());
+        // console.log(objj.dcdc());
+        // console.log(b());
+        //
+        // // 错 2
+        // Function.prototype.a = () => alert(1);
+        // Object.prototype.b = () => alert(2);
+        // function A() {};
+        // var a = new A();
+        // a.a();
+        // console.log(a);
+        // a.b();
+
+
+        // 4 5 undefined
+        // 构造函数返回对象，以对象为准
+        // 构造优先级 返回对象 > 构造内部属性方法 > 原型链上的属性方法
+        function Foo() {
+            this.a = 1;
+            return {
+                a: 4,
+                b: 5,
+            };
         }
 
-        function b() {
-            var count = 20;
-            console.log(this);
-            console.log(this.count);
-            return a();
-        }
+        Foo.prototype.a = 6;
+        Foo.prototype.b = 7;
+        Foo.prototype.c = 8;
 
-        let objj = {
-            count: 50,
-            dcdc: function dcdc() {
-            return  this.count;
-        },
-        };
+        var o = new Foo();
 
-        var dcdcdc = objj.dcdc;
-        console.log(dcdcdc());
-        console.log(objj.dcdc());
-        console.log(b());
+        console.log(o);
 
-        // 错 2
-        Function.prototype.a = () => alert(1);
-        Object.prototype.b = () => alert(2);
-        function A() {};
-        var a = new A();
-        a.a();
-        console.log(a);
-        a.b();
+        console.log(o.a);
+        console.log(o.b);
+        console.log(o.c);
 
 
 
