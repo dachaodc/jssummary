@@ -4,6 +4,7 @@
 // 4.原型式继承
 // 5.寄生式继承
 // 6.寄生组合式继承
+// 7.class 里的 extends继承
 
 // 构造函数
 function Person(name, age) {

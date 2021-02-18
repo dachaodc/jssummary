@@ -40,7 +40,7 @@
 //         if (parent === null) return null;
 //         if (typeof parent !== 'object') return parent;
 //
-//         let child, proto;
+//         let child, 原型;
 //
 //         if (isType(parent, 'Array')) {
 //             // 对数组做特殊处理
@@ -54,9 +54,9 @@
 //             child = new Date(parent.getTime());
 //         } else {
 //             // 处理对象原型
-//             proto = Object.getPrototypeOf(parent);
+//             原型 = Object.getPrototypeOf(parent);
 //             // 利用Object.create切断原型链
-//             child = Object.create(proto);
+//             child = Object.create(原型);
 //         }
 //
 //         // 处理循环引用

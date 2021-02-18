@@ -2,11 +2,11 @@
 
 // 模拟 Object.create
 
-// function create(proto) {
+// function create(原型) {
 //     function F() {
 //     }
 //
-//     F.prototype = proto;
+//     F.prototype = 原型;
 //
 //     return new F();
 // }

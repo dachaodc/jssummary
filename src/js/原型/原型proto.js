@@ -29,4 +29,25 @@ if(!Array.isArrayCo){
 
 console.log(Array.isArrayCo(value));
 
+console.log('-----------------------------------');
+
+function Person(){
+}
+var person1 = new Person();
+
+console.log(Object instanceof Function); // true
+console.log(Function instanceof Object); // true
+
+console.log(Object.prototype);
+console.log(Object.prototype.__proto__);
+
+console.log('-----------------------------------');
+
+console.log(person1.__proto__ == Person.prototype);
+console.log(person1.constructor == Person);
+console.log(Person.__proto__ == Function.prototype);
+console.log(Person.prototype.constructor == Person);
+console.log(person1.__proto__.constructor == Person);
+console.log(Person.prototype == person1.__proto__);
+
 
