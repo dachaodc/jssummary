@@ -58,23 +58,27 @@
         // Uncaught ReferenceError: Cannot access 'b' before initialization
         // let b = 1;
         // function fnb() {
-        //     console.log(b);
-        //     let b = 2;
+        //     // console.log(b);
+        //     // let b = 2;
+        //     var bc = 3;
+        //     var bc = 4;
         // }
         // fnb();
 
         // 20
-        // var count = 10;
-        // function a() {
-        //     return count + 10;
-        // }
-        //
-        // function b() {
-        //     var count = 20;
-        //     return a();
-        // }
-        //
-        // console.log(b());
+        var count = 10;
+        function a() {
+            return count + 10;
+        }
+
+        function b() {
+            var count = 20;
+            console.log(this);
+            console.log(this.count);
+            return a();
+        }
+
+        console.log(b());
 
         // 错 2
         Function.prototype.a = () => alert(1);
