@@ -155,15 +155,26 @@ console.log('---------------------');
 
 // 七.面向对象class类继承
 class DClass {
-   name = "dc";
-   age = 18;
+    name = "dc";
+    age = 18;
 }
 
-class SubClass extends DClass{}
+class SubClass extends DClass {
+}
 
 let subClass = new SubClass();
 console.log(subClass.age);
 console.log(subClass.name);
+
+
+// 总结：
+// 　继承这些知识点与其说是对象的继承，更像是函数的功能用法，
+//   如何用函数做到复用，组合，这些和使用继承的思考是一样的。
+//   上述几个继承的方法都可以手动修复他们的缺点，但就是多了这个手动修复就变成了另一种继承模式。
+//   这些继承模式的学习重点是学它们的思想，不然你会在coding书本上的例子的时候，
+//   会觉得明明可以直接继承为什么还要搞这么麻烦。
+//   就像原型式继承它用函数复制了内部对象的一个副本，这样不仅可以继承内部对象的属性，
+//   还能把函数（对象，来源内部对象的返回）随意调用，给它们添加属性，改个参数就可以改变原型对象，而这些新增的属性也不会相互影响。
 
 
 
