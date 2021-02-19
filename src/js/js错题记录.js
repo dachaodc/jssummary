@@ -59,7 +59,26 @@ console.log(new Boolean([]));
 
 console.log('----------------------------');
 
-// 3.下面哪个是错误的？
+// 3.下面描述中，关于js函数定义，正确的是 C
+
+// A.function add(a,b) { return a + b; } 函数表达式
+
+// B.var add = new Function("a", "b", return a + b) 函数表达式
+
+// C.function add(a,b) { return a + b; } 函数声明
+
+// D.var add = new Function("a", "b", return a + b); 函数声明
+
+// 一.函数声明语法定义   没有等号 =
+// function sum(num1, num2) { return num1 + num2 }
+
+// 二.函数表达式定义函数 有等号 最后有分号
+// 1. var sum = function(num1, num2) { return num1 + num2 };
+// 2. var sum = new Function("num1", "num2", return "num1 + num2");
+
+
+
+
 
 
 
