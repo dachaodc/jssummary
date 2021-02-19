@@ -77,6 +77,43 @@ console.log('----------------------------');
 // 2. var sum = new Function("num1", "num2", return "num1 + num2");
 
 
+// 4. typeof Date.now() 的值是： C 返回时间戳
+
+// A. "date"
+// B. "object"
+// C. "number"
+// D. "error"
+
+// 5.以下符合ES6写法的有：（C）
+
+// A. class Foo {
+//    constructor() {
+//          return Object.create(null);
+//    }
+// }
+// Foo()
+
+// B. var m = 1; export m;
+
+// C. export var firstName = 'Michael';
+
+// D. 在A模块中export{readFile}后，在B模块中import readfile from 'A'可以获取到readFile
+
+// A中 Foo 是 class类，必须使用new调用，否则会报错；
+// B中 export命令规定的是对外的接口，必须与模块内部的变量建立一一对应的关系；
+// 写法一
+// export var m = 1;
+// 写法二
+// var m = 1;
+// export {m};
+// 写法三
+// var n = 1;
+// export { n as m };
+// D中 export 对象，需要用解构import
+
+
+
+
 
 
 
