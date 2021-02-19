@@ -107,6 +107,7 @@ console.log(new C(2).a);//2
 console.log('--------------练习二---------------');
 
 function Fun(){
+    // 这个没有this. 所以掉不到
     var getName = function(){
         console.log(1);
     }
@@ -118,16 +119,21 @@ Fun.getName = function(){
 Fun.prototype.getName = function(){
     console.log(3);
 }
-var getName = function(){
-    console.log(4);
-}
+
+// 优先级没有 var getName 高，也执行不了
 function getName(){
     console.log(5);
 }
 
-// Fun().getName(); //4
-getName(); //4
-new Fun().getName();//3
+var getName = function(){
+    console.log(4);
+}
+
+// Fun().getName(); // 4 window.getName()
+getName(); //4      // window.getName()
+new Fun().getName();//3 // 原型的getName
 new new Fun().getName();//3
+
+console.log(new Fun());
 
 
