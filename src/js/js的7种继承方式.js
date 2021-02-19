@@ -143,9 +143,11 @@ function SubCC() {
 
 let cc = contentCon(Person.prototype);
 SubCC.prototype = cc;
+cc.constructor = SubCC;
 
 let subcc = new SubCC();
 console.log(subcc.h);
+console.log(subcc.constructor);
 
 // 重点：修复了组合继承的问题
 
@@ -153,8 +155,8 @@ console.log('---------------------');
 
 // 七.面向对象class类继承
 class DClass {
-    name = "dc";
-    age = 18;
+   name = "dc";
+   age = 18;
 }
 
 class SubClass extends DClass{}
