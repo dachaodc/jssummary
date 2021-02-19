@@ -79,7 +79,9 @@ console.log('---------------------');
 
 // 四.原型式继承
 function content(obj) {
-    function F() {}
+    function F() {
+    }
+
     F.prototype = obj;
     return new F()
 }
@@ -98,7 +100,9 @@ console.log('---------------------');
 // 五.寄生式继承
 
 function con(obj) {
-    function F() {}
+    function F() {
+    }
+
     F.prototype = obj;
     return new F();
 }
@@ -117,10 +121,48 @@ console.log(o.h);
 // 　　　　优点：没有创建自定义类型，因为只是套了个壳子返回对象，这个函数顺理成章就成了创建的新对象。
 // 　　　　缺点：没用到原型，无法复用。
 
+console.log('---------------------');
+
 // 六.寄生组合式继承
 
 // 寄生：在函数内返回对象然后调用
 // 组合：1.函数的原型等于另一个实例 2.在函数中用apply或者call引入另一个构造函数，可传参　
+
+function contentCon(obj) {
+    function F() {
+    }
+
+    F.prototype = obj;
+    return new F();
+}
+
+function SubCC() {
+    Person.call(this);
+}
+
+
+let cc = contentCon(Person.prototype);
+SubCC.prototype = cc;
+
+let subcc = new SubCC();
+console.log(subcc.h);
+
+// 重点：修复了组合继承的问题
+
+console.log('---------------------');
+
+// 七.面向对象class类继承
+class DClass {
+    name = "dc";
+    age = 18;
+}
+
+class SubClass extends DClass{}
+
+let subClass = new SubClass();
+console.log(subClass.age);
+console.log(subClass.name);
+
 
 
 
