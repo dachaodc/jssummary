@@ -55,4 +55,78 @@ console.log(der.h);
 // 　　　　　　　2、无法实现构造函数的复用。（每次用每次都要重新调用）
 // 　　　　　　　3、每个新实例都有父类构造函数的副本，臃肿。
 
+console.log('---------------------');
+
+// 三.组合继承(组合原型链继承和借用构造函数继承)
+
+function SubDer(name) {
+    Person.call(this, "zycdc");
+    this.name = name;
+}
+
+SubDer.prototype = new Person();
+let subDer = new SubDer("xixi");
+console.log(subDer.h);
+console.log(subDer.name);
+console.log(subDer.age);
+
+// 重点：结合了两种模式的优点，传参和复用
+// 　　　　特点：1、可以继承父类原型上的属性，可以传参，可复用。
+// 　　　　　　　2、每个新实例引入的构造函数属性是私有的。
+// 　　　　缺点：调用了两次父类构造函数（耗内存），子类的构造函数会代替原型上的那个父类构造函数。
+
+console.log('---------------------');
+
+// 四.原型式继承
+function content(obj) {
+    function F() {}
+    F.prototype = obj;
+    return new F()
+}
+
+let p = new Person();
+let r = content(p);
+console.log(r.h);
+
+// 重点：用一个函数包装一个对象，然后返回这个函数的调用，这个函数就变成了个可以随意增添属性的实例或对象。object.create()就是这个原理。
+// 　　　　特点：类似于复制一个对象，用函数来包装。
+// 　　　　缺点：1、所有实例都会继承原型上的属性。
+// 　　　　　　　2、无法实现复用。（新实例属性都是后面添加的）
+
+console.log('---------------------');
+
+// 五.寄生式继承
+
+function con(obj) {
+    function F() {}
+    F.prototype = obj;
+    return new F();
+}
+
+function wrap(newO) {
+    let o = con(newO);
+    o.name = 'cc';
+    return o;
+}
+
+let perper = new Person();
+let o = wrap(perper);
+console.log(o.h);
+
+// 　重点：就是给原型式继承外面套了个壳子。
+// 　　　　优点：没有创建自定义类型，因为只是套了个壳子返回对象，这个函数顺理成章就成了创建的新对象。
+// 　　　　缺点：没用到原型，无法复用。
+
+// 六.寄生组合式继承
+
+// 寄生：在函数内返回对象然后调用
+// 组合：1.函数的原型等于另一个实例 2.在函数中用apply或者call引入另一个构造函数，可传参　
+
+
+
+
+
+
+
+
 
