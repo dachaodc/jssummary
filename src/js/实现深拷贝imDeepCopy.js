@@ -108,15 +108,24 @@
 // // 例如Buffer对象、Promise、Set、Map可能都需要我们做特殊处理，另外对于确保没有循环引用的对象，
 // // 我们可以省去对循环引用的特殊处理，因为这很消耗时间，不过一个基本的深克隆函数我们已经实现了。
 
-function repeat(n) {
-    this.pro
-    if (!str) return;
-    let arr = str.split('');
-    for (let i = 0; i < n; i ++) {
-        for (let j = 0; j < arr.length; j ++) {
-            console.log(arr[j])
-        }
-    }
+// function repeat(n) {
+//     this.pro
+//     if (!str) return;
+//     let arr = str.split('');
+//     for (let i = 0; i < n; i ++) {
+//         for (let j = 0; j < arr.length; j ++) {
+//             console.log(arr[j])
+//         }
+//     }
+//
+// }
+// 'hello'.repeat(2)
 
-}
-'hello'.repeat(2)
+// 2021 2 20 手动实现深拷贝
+
+
+
+
+
+
+
