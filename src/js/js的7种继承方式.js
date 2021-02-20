@@ -27,6 +27,9 @@ Per.prototype = new Person(); // 赋值给构造的原型，这样实例的__pro
 let per = new Per('zyc');
 console.log(per instanceof Person);
 console.log(per.h);
+console.log(per.name);
+console.log(per.constructor);
+console.log(per.__proto__);
 
 // 重点：让新实例的原型等于父类的实例。
 // 优点：1、实例可继承的属性有：实例的构造函数的属性，父类构造函数属性，父类原型的属性。（新实例不会继承父类实例的属性！）
@@ -148,6 +151,9 @@ cc.constructor = SubCC;
 let subcc = new SubCC();
 console.log(subcc.h);
 console.log(subcc.constructor);
+console.log(subcc.__proto__);
+console.log(SubCC.prototype);
+console.log(cc);
 
 // 重点：修复了组合继承的问题
 
