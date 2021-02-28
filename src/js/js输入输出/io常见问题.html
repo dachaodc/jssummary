@@ -33,19 +33,38 @@
     // }
 
     window.onload = function () {
-        // 0 1 2
-        for (let i = 0; i < 3; i++) {
-            document.body.addEventListener('click', function () {
-                console.log(i);
-            });
+        // // 0 1 2
+        // for (let i = 0; i < 3; i++) {
+        //     document.body.addEventListener('click', function () {
+        //         console.log(i);
+        //     });
+        // }
+        //
+        // // 3 3 3
+        // for (var i = 0; i < 3; i++) {
+        //     document.body.addEventListener('click', function () {
+        //         console.log(i);
+        //     });
+        // }
+
+
+        // 1,2,3,4,5
+        const tempArr = [1,2,3,4,5];
+        for (let i = 0; i < tempArr.length; i++) {
+            setTimeout( () => {
+                console.log(tempArr[i]);
+            },0)
         }
 
-        // 3 3 3
-        for (var i = 0; i < 3; i++) {
-            document.body.addEventListener('click', function () {
+        // 5 undefined 5 undefined 5 undefined 5 undefined 5 undefined
+        const tempArr2 = [1,2,3,4,5];
+        for (var i = 0; i < tempArr2.length; i++) {
+            setTimeout( () => {
                 console.log(i);
-            });
+                console.log(tempArr2[i]);
+            },0)
         }
+
 
         // undefined
         // js链式作用域 JS权威指南的描述：
@@ -107,25 +126,27 @@
         // 4 5 undefined
         // 构造函数返回对象，以对象为准
         // 构造优先级 返回对象 > 构造内部属性方法 > 原型链上的属性方法
-        function Foo() {
-            this.a = 1;
-            return {
-                a: 4,
-                b: 5,
-            };
-        }
+        // function Foo() {
+        //     this.a = 1;
+        //     return {
+        //         a: 4,
+        //         b: 5,
+        //     };
+        // }
+        //
+        // Foo.prototype.a = 6;
+        // Foo.prototype.b = 7;
+        // Foo.prototype.c = 8;
+        //
+        // var o = new Foo();
+        //
+        // console.log(o);
+        //
+        // console.log(o.a);
+        // console.log(o.b);
+        // console.log(o.c);
 
-        Foo.prototype.a = 6;
-        Foo.prototype.b = 7;
-        Foo.prototype.c = 8;
 
-        var o = new Foo();
-
-        console.log(o);
-
-        console.log(o.a);
-        console.log(o.b);
-        console.log(o.c);
 
 
 
