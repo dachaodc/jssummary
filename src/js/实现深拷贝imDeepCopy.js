@@ -122,10 +122,75 @@
 // 'hello'.repeat(2)
 
 // 2021 2 20 手动实现深拷贝
+// function deepClone(target) {
+//     // 定义一个变量
+//     let result;
+//     // 如果是一个对象的话
+//     if (typeof target === 'object') {
+//         if (Array.isArray(target)) {
+//             result = [];
+//             for (let index in target) {
+//                 result.push(deepClone(target[index]));
+//             }
+//         } else if (target == null) {
+//             return null;
+//         } else if (target.constructor === RegExp) {
+//             result = target;
+//         } else {
+//             // 普通对象 直接for in 循环，递归复制对象所有值
+//             result = {};
+//             for (let i in target) {
+//                 result[i] = deepClone(target[i]);
+//             }
+//         }
+//     } else {
+//         // 不是对象，就是基本数据类型，
+//         result = target;
+//     }
+//
+//     return result;
+// }
+//
+// // let tempArr = [1, 2, 3, 4, [[5, 6], 7]];
+// // let tempArr = [1, 2, 3, 4, [{a:123}, 7]];
+// let tempArr = new Date();
+//
+// console.log(deepClone(tempArr));
 
+// 20210228 实现深拷贝
+function deepCopy(target) {
+    let result;
+    if (typeof target === 'object') {
+        result = [];
+        if (Array.isArray(target)) {
+            for (let index in target) {
+                console.log(index);
+                result.push(deepCopy(target[index]));
+            }
+        } else if (target.constructor === RegExp) {
+            result = target;
+        } else if (target === null) {
+            result = null;
+        } else {
+            result = {};
+            // 普通对象
+            for (let key in target) {
+                console.log(key);
+                if (target.hasOwnProperty(key)) {
+                    result[key] = deepCopy(target[key]);
+                }
+            }
+        }
+    } else {
+        result = target;
+    }
+    return result;
+}
 
+// let tempObj = [5,7,8];
+let tempObj = { name:'zyc', age: 29 };
 
-
+console.log(deepCopy(tempObj));
 
 
 
