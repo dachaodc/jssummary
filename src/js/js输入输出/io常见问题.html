@@ -49,21 +49,21 @@
 
 
         // 1,2,3,4,5
-        const tempArr = [1,2,3,4,5];
-        for (let i = 0; i < tempArr.length; i++) {
-            setTimeout( () => {
-                console.log(tempArr[i]);
-            },0)
-        }
-
-        // 5 undefined 5 undefined 5 undefined 5 undefined 5 undefined
-        const tempArr2 = [1,2,3,4,5];
-        for (var i = 0; i < tempArr2.length; i++) {
-            setTimeout( () => {
-                console.log(i);
-                console.log(tempArr2[i]);
-            },0)
-        }
+        // const tempArr = [1,2,3,4,5];
+        // for (let i = 0; i < tempArr.length; i++) {
+        //     setTimeout( () => {
+        //         console.log(tempArr[i]);
+        //     },0)
+        // }
+        //
+        // // 5 undefined 5 undefined 5 undefined 5 undefined 5 undefined
+        // const tempArr2 = [1,2,3,4,5];
+        // for (var i = 0; i < tempArr2.length; i++) {
+        //     setTimeout( () => {
+        //         console.log(i);
+        //         console.log(tempArr2[i]);
+        //     },0)
+        // }
 
 
         // undefined
@@ -146,10 +146,28 @@
         // console.log(o.b);
         // console.log(o.c);
 
+        // 看输出结果
+        let obj = {
+            count: 3,
+            name: 'zyc'
+        };
 
+        console.log(obj.count); // 3
 
+        function observe(obj) {
+            Object.keys(obj).map((key) => {
+                calcCount(obj, key, obj[key]);
+            })
+        }
 
+        function calcCount(obj, key, val) {
+            Object.defineProperties(obj, {
 
+            });
+        }
+
+        observe(obj);
+        console.log(obj.count);
 
 
     };
