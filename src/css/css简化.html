@@ -19,17 +19,23 @@
         /*    background: lightcoral;*/
         /*    background-image: url("./img/icon_logo.png");*/
         /*    background-origin: border-box;*/
-        /*    background-position: center;*/
+        /*    background-position: left top;*/
         /*    background-repeat: no-repeat;*/
         /*    background-size: 100px 50px;*/
         /*}*/
 
+        /* background 属性不区分先后顺序 */
+        /*  */
         .div2 {
             width: 100px;
             height: 50px;
             margin: 0 auto;
-            background: url("./img/icon_logo.png") border-box center no-repeat;
-            background-size: 100px 50px;
+            background: url("./img/icon_logo.png") 10px 10px/10px 10px repeat border-box;
+            /*background-size: 10px 10px;*/
+
+            /*background: url("./img/icon_logo.png") 0% 0%/60px 60px no-repeat padding-box,*/
+            /*url("./img/icon_logo.png") 40px 10px/110px 110px no-repeat content-box,*/
+            /*url("./img/icon_logo.png") 140px 40px/200px 100px no-repeat content-box #58a;*/
         }
 
         /*.div1 #ul1 li {*/
@@ -37,6 +43,7 @@
         /*    margin-top: 10px;*/
         /*}*/
 
+        /*id选择器 优先级高于 class选择器 不需要在再前面用class*/
         #ul1 li {
             list-style-type: none;
             margin-top: 10px;
