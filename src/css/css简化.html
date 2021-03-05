@@ -20,18 +20,23 @@
         /*    background-image: url("./img/icon_logo.png");*/
         /*    background-origin: border-box;*/
         /*    background-position: left top;*/
-        /*    background-repeat: no-repeat;*/
-        /*    background-size: 100px 50px;*/
+        /*    background-repeat: repeat;*/
+        /*    background-size: 10px 10px;*/
         /*}*/
 
         /* background 属性不区分先后顺序 */
-        /*  */
+        /* 建议顺序如下: bg-color || bg-image || bg-position [ / bg-size]? || bg-repeat || bg-attachment || bg-origin || bg-clip */
+        /*顺序并非固定
+         *background-position 和 background-size 属性, 之间需使用/分隔, 且position值在前, size值在后。
+         *如果同时使用 background-origin 和 background-clip 属性, origin属性值需在clip属性值之前, 如果origin与clip属性值相同, 则可只设置一个值*/
         .div2 {
             width: 100px;
             height: 50px;
             margin: 0 auto;
-            background: url("./img/icon_logo.png") 10px 10px/10px 10px repeat border-box;
-            /*background-size: 10px 10px;*/
+            background: lightcoral url("./img/icon_logo.png") left top/10px 10px repeat fixed padding-box border-box;
+
+            /*background是一个复合属性, 可设置多组属性, 每组属性间使用逗号分隔, 其中背景颜色不能设置多个且只能放在最后一组。*/
+            /*如设置的多组属性的背景图像之间存在重叠, 则前面的背景图像会覆盖在后面的背景图像上*/
 
             /*background: url("./img/icon_logo.png") 0% 0%/60px 60px no-repeat padding-box,*/
             /*url("./img/icon_logo.png") 40px 10px/110px 110px no-repeat content-box,*/
