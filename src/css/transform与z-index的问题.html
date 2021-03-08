@@ -1,0 +1,56 @@
+<!--在CSS中使用margin、float、offset这些属性，可以控制元素在x轴和y轴上的表现。-->
+<!--而z轴上的表现形式可以通过z-index和transform来控制。那它俩是怎么控制z轴的呢？-->
+<!--z-index控制z轴，需要配合position属性，且position的属性值为relative、absolute、fixed和sticky时。-->
+<!--并且给z-index显式的设置数值，数值越大，其层级越高。简单点说，数值越高，元素越在顶上。-->
+<!--transform可以通过它的translateZ() 来改变元素的层叠顺序，其值越大，越在顶层，离屏幕越近。-->
+<!--不过通过transform:translateZ() 改变元素z轴的层级，必须在元素的父元素中显示的设置transform-style:preserver-3d
+或者在transform中显示的设置perspective() 。-->
+<!--@注：transform会创建更高层级的stacking context（堆叠上下文），所以z-index会失效。-->
+<!--能同样创建stacking context的还有opacity属性-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>transform与z-index的问题</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .father {
+            transform-style: preserve-3d;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background: lightsalmon;
+        }
+
+        .child1 {
+            width: 100px;
+            height: 100px;
+            background: lightcoral;
+            transform: translateZ(10px);
+        }
+
+        .child2 {
+            width: 50px;
+            height: 50px;
+            background: lightgreen;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            /*transform: translateX(-50%) translateY(-50%);*/
+            transform: translateZ(30px);
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="child1">123</div>
+    <div class="child2">456</div>
+</div>
+</body>
+</html>
+
+
