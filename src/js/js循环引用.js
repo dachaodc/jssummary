@@ -27,6 +27,7 @@ objB.parent = objA;
 console.log(objA);
 
 console.log('--------------解决方案---类似深拷贝，有循环引用的地方值置为$----------');
+console.log('------https://link.zhihu.com/?target=https%3A//github.com/douglascrockford/JSON-js---------');
 
 var peo = {
     var: 'foo'
