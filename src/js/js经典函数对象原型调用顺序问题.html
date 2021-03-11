@@ -1,0 +1,74 @@
+<!--函数提升要比变量提升的优先级要高一些，且不会被变量声明覆盖，但是会被变量赋值之后覆盖。-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>经典js打印输出问题</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+</body>
+<script defer type="text/javascript">
+    function Foo() {
+        getName = function () {
+            console.log(1);
+        };
+        return this;
+    }
+
+    Foo.getName = function () {
+        console.log(2);
+    };
+
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+
+    var getName = function () {
+        console.log(4);
+    };
+
+    function getName() {
+        console.log(5);
+    };
+
+    // 输出下列结果
+
+    Foo.getName();
+
+    getName();
+
+    Foo().getName();
+
+    getName();
+
+    new Foo.getName();
+
+    new Foo().getName();
+
+    new new Foo().getName();
+
+
+    // 解析:
+    // Foo.getName()   =>   2
+    //
+    // Foo.getName()就是单纯的表示 输出函数 Foo的静态方法，所以直接输出2
+    //
+    // getName()  =>  4
+    //
+    // getName()因为提前声明的原因， 声明后被  var getName() = xxx 所覆盖  所以这里的输出 变成 4
+    //
+    // Foo().getName()  => 1
+    //
+    // Foo()里的return this 是window，而window.getName 在Foo里被覆盖，所以输出为 1
+    //
+    // getName()  => 1
+    //
+    // 而这里getName() 在 Foo().getName() 之后，原window里的getName被覆盖，所以输出同上 为 1
+    //
+    // new Foo.getName() 2
+    //
+    // new Foo().getName() 3
+    //
+    // new new Foo().getName() 3
+</script>
+</html>

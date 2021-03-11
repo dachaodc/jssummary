@@ -147,27 +147,90 @@
         // console.log(o.c);
 
         // 看输出结果
-        let obj = {
-            count: 3,
-            name: 'zyc'
-        };
+        // let obj = {
+        //     count: 3,
+        //     name: 'zyc'
+        // };
+        //
+        // console.log(obj.count); // 3
+        //
+        // function observe(obj) {
+        //     Object.keys(obj).map((key) => {
+        //         calcCount(obj, key, obj[key]);
+        //     })
+        // }
+        //
+        // function calcCount(obj, key, val) {
+        //     Object.defineProperties(obj, {
+        //         configurable: true,
+        //         enumerable: false,
+        //
+        //     });
+        // }
+        //
+        // observe(obj);
+        // console.log(obj.count);
 
-        console.log(obj.count); // 3
 
-        function observe(obj) {
-            Object.keys(obj).map((key) => {
-                calcCount(obj, key, obj[key]);
-            })
+        console.log("----------------------------------------------------------------");
+
+        // var obj = {};
+        // var aValue; //如果不初始化变量, 不给下面的a属性设置值,直接读取会报错aValue is not defined
+        // var b;
+        // Object.defineProperty(obj, 'a', {
+        //     configurable : true,
+        //     enumerable : true,
+        //     get: function() {
+        //         return aValue
+        //     },
+        //     set: function(newValue) {
+        //         aValue = newValue;
+        //         b = newValue + 1
+        //     }
+        // })
+        // console.log(b) // undefined
+        // console.log(obj.a)  // undefined, 当读取属性值时，调用get方法,返回undefined
+        // obj.a = 2;  // 当设置属性值时,调用set方法,aValue为2
+        //
+        // console.log(obj.a) // 2  读取属性值,调用get方法,此时aValue为2
+        // console.log(b) // 3  再
+
+        console.log("------------------写出输出结果---------------js连续赋值问题-------------------");
+        // let a = {n: 1};
+        // a.x = a = {n: 2};
+        // // a.x = {n:2};
+        // console.log(a); // {n:2}
+        // console.log(a.x); // undefined
+        let a = {n: 1};
+        let b = a;
+        a.x = a = {n: 2};
+        console.log(a.x); // undefined
+        console.log(b);   // {n: 1, x: {n:2} }
+        console.log(b.x);   // {n:2}
+
+
+
+        console.log("------------------写出输出结果---------------当时自己写错了，写错了-------------");
+
+        async function ioDc() {
+            console.log(1);
+            await new Promise(resolve => resolve());
+            console.log(2);
         }
 
-        function calcCount(obj, key, val) {
-            Object.defineProperties(obj, {
+        new Promise(resolve => {
+            console.log(3);
+            resolve()
+        }).then(() => {
+            console.log(4);
+        });
 
-            });
-        }
+        setTimeout(() => {
+            console.log(5)
+        });
 
-        observe(obj);
-        console.log(obj.count);
+        ioDc();
+        console.log(6);
 
 
     };
