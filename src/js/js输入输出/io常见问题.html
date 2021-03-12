@@ -172,7 +172,7 @@
         // console.log(obj.count);
 
 
-        console.log("----------------------------------------------------------------");
+        // console.log("----------------------------------------------------------------");
 
         // var obj = {};
         // var aValue; //如果不初始化变量, 不给下面的a属性设置值,直接读取会报错aValue is not defined
@@ -195,42 +195,188 @@
         // console.log(obj.a) // 2  读取属性值,调用get方法,此时aValue为2
         // console.log(b) // 3  再
 
-        console.log("------------------写出输出结果---------------js连续赋值问题-------------------");
+        // console.log("------------------写出输出结果---------------js连续赋值问题-------------------");
         // let a = {n: 1};
         // a.x = a = {n: 2};
         // // a.x = {n:2};
         // console.log(a); // {n:2}
         // console.log(a.x); // undefined
-        let a = {n: 1};
-        let b = a;
-        a.x = a = {n: 2};
-        console.log(a.x); // undefined
-        console.log(b);   // {n: 1, x: {n:2} }
-        console.log(b.x);   // {n:2}
 
 
+        // let a = {n: 1};
+        // let b = a;
+        // a.x = a = {n: 2};
+        // console.log(a); // {n:2}
+        // console.log(a.x); // undefined
+        // console.log(b);   // {n: 1, x: {n:2} }
+        // console.log(b.x);   // {n:2}
 
-        console.log("------------------写出输出结果---------------当时自己写错了，写错了-------------");
+        // 知识点：
+        // 点的优先级大于等号的优先级
+        // 对象以指针的形势进行存储，每个新对象都是一份新的存储地址
+        // 解析：
+        // let b = a ; b 和 a 都指向同一个地址
+        //  . 的优先级高于 =  。所以先执行 a.x ，于是现在的 a 和 b 都是 { n : 2 , x : undefined }
+        //  = 从右向左执行。所以是执行 a = { n : 2 }，于是 a 指向了 { n : 2 } 不再是之前的地址
+        //  再执行 a.x = a。这里注意，a.x 是最开始执行的（可以看作是一个整体），已经是 { n : 1 , x : undefined }
+        //  而不是一开始的那个 a ，而且 b 和旧的 a 是指向同一个地址的，相当于b.x = a 。所以 b 也就变了
+        //  但是，= 右边的 a 是已经指向了新地址的 a 。
+        // 所以，a.x = a 可以看成是 { n : 1, x : undefined }.x = { n : 2 }
 
-        async function ioDc() {
-            console.log(1);
-            await new Promise(resolve => resolve());
-            console.log(2);
+        // console.log("------------------写出输出结果---------------当时自己写错了，写错了-------------");
+        //
+        // async function ioDc() {
+        //     console.log(1);
+        //     await new Promise(resolve => resolve());
+        //     console.log(2);
+        // }
+        //
+        // new Promise(resolve => {
+        //     console.log(3);
+        //     resolve()
+        // }).then(() => {
+        //     console.log(4);
+        // });
+        //
+        // setTimeout(() => {
+        //     console.log(5)
+        // });
+        //
+        // ioDc();
+        // console.log(6);
+
+        // console.log("--------------------一道类似题-------------------");
+        // console.log("-----首先执行 宏任务同步代码 => 微任务的Event Queue => 宏任务的Event Queue-------");
+        // console.log("在执行宏任务同步代码的过程中，会分别将微任务的异步和宏任务的异步放入各自的队列");
+        //
+        async function async1() {
+            console.log('async1 start');
+            await async2();
+            console.log('asnyc1 end');
+            await async3();
+            console.log('asnyc3 end');
         }
 
-        new Promise(resolve => {
-            console.log(3);
-            resolve()
-        }).then(() => {
-            console.log(4);
-        });
+        async function async2() {
+            console.log('async2');
+        }
 
+        async function async3() {
+            console.log('async3');
+        }
+
+        console.log('script start');
         setTimeout(() => {
-            console.log(5)
+            console.log('setTimeOut');
+        }, 0);
+        async1();
+        new Promise(function (reslove) {
+            console.log('promise1');
+            reslove();
+        }).then(function () {
+            console.log('promise2');
         });
+        console.log('script end');
 
-        ioDc();
-        console.log(6);
+        // script start
+        // async1 start
+        // async2
+        // promise1
+        // script end
+        // asnyc1 end
+        // promise2
+        // setTimeOut
+
+
+        // console.log("------------promise----可以无限往下执行--------");
+        // new Promise((resolve, reject) => {
+        //     console.log("promise1");
+        //     resolve(1);
+        // }).then((res) => {
+        //     console.log(res);
+        //     console.log("promise2");
+        // }).then((res) => {
+        //     console.log(res);
+        //     console.log("promise3");
+        //     "".shift();  // 报错走catch
+        // })
+        //     .catch((res) => {
+        //     console.log(res);
+        //     console.log("promise4")
+        // })
+        //     .finally(() => {
+        //     console.log("promise5")
+        // }).catch(() => {
+        //     console.log("promise6") // 没报错，所以不执行
+        // }).then(() => {
+        //     console.log("promise7")
+        // }).finally(() => {
+        //     console.log("promise8")
+        // }).then(() => {
+        //     console.log("每次都返回promise,所以可以无限次调用~")
+        // });
+
+        // console.log("-------------async---await-----------");
+        // console.log("----await表达式--下面的代码被置于微任务队列里，等待执行-----------");
+
+        // async函数可能包含0个或者多个await表达式。
+        // await表达式会暂停整个async函数的执行进程并出让其控制权，
+        // 只有当其等待的基于promise的异步操作被兑现或被拒绝之后才会恢复进程。
+        // promise的解决值会被当作该await表达式的返回值。使用async / await关键字就可以在异步代码中使用普通的try / catch代码块。
+
+        // async函数的函数体可以被看作是由0个或者多个await表达式分割开来的。
+        // 从第一行代码直到（并包括）第一个await表达式（如果有的话）都是同步运行的。
+        // 这样的话，一个不含await表达式的async函数是会同步运行的。
+        // 然而，如果函数体内有一个await表达式，async函数就一定会异步执行。
+
+        // async function foo() {
+        //     return 1
+        // }
+        // function foo() {
+        //     return Promise.resolve(1)
+        // }
+
+        // async function foo() {
+        //      await 1
+        //      console.log('zzz')
+        // }
+        // function foo() {
+        //     Promise.resolve(1).then(() => {
+        //         console.log('zzz')
+        //     })
+        // }
+
+        // function getName() {
+        //     console.log("zyc");
+        // }
+        //
+        // async function asyDcTest() {
+        //     console.log("111111");
+        //     await getName();
+        //     console.log("222222");
+        // }
+        //
+        // setTimeout(() => {
+        //     console.log("setTimeout");
+        // }, 0);
+        // console.log("script start");
+        // asyDcTest();
+        // console.log("promise start");
+        // new Promise((resolve, reject) => {
+        //     console.log("new Promise");
+        //     resolve("qwe")
+        // }).then(() => {
+        //     console.log("new Promise then");
+        // })
+
+        // script start
+        // 111111
+        // zyc
+        // promise start
+        // new Promise
+        // 222222
+        // new Promise then
+        // setTimeout
 
 
     };
