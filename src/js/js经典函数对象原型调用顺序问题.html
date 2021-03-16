@@ -1,4 +1,22 @@
 <!--函数提升要比变量提升的优先级要高一些，且不会被变量声明覆盖，但是会被变量赋值之后覆盖。-->
+<!--函数会首先被提升，然后才是变量-->
+<!--函数提升优先级比变量提升要高，且不会被变量声明覆盖，但是会被变量赋值覆盖。
+在最后再加上打印就能看到函数已经被覆盖了。-->
+<!--同一个标识符的情况下，变量声明与函数声明都会提升；函数声明会覆盖变量声明，但不会覆盖变量赋值，
+即：如果声明变量的同时初始化或赋值那么变量优先级高于函数-->
+
+<!--https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence-->
+<!--MDN运算符优先级-->
+<!--
+优先级	运算类型	  关联性	     例子
+20	     圆括号	   n/a	 （a + b) * c
+19	    成员访问	 从左到右	object.method
+19	需要计算的成员访问	从左到右	object[“a”+”b”]
+19	  new 带参数列表	n/a	new fun()
+19	 函数调用	  从左到右	fun()
+18	new 无参数列表  从右到左	new fun
+-->
+<!--() 高于 . 高于 new fun() 高于 fun() 高于 new fun-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +32,8 @@
         };
         return this;
     }
+
+    // console.log(this);
 
     Foo.getName = function () {
         console.log(2);
@@ -41,7 +61,9 @@
 
     getName();
 
-    new Foo.getName();
+
+    var bar = new Foo.getName();
+    console.log(bar.__proto__.constructor === Foo.getName);
 
     new Foo().getName();
 
@@ -70,5 +92,18 @@
     // new Foo().getName() 3
     //
     // new new Foo().getName() 3
+
+    // 首先new Foo()得到一个空对象{}
+    // 第二步向空对象中添加一个属性getName，值为一个函数
+    // 第三步new {}.getName()
+    // 源代码等价于 var bar = new (new Foo().getName)(); console.log(bar)
+    // ​先new Foo得到的实例对象上的getName方法，
+    // 再将这个原型上getName方法当做构造函数继续new ，
+    // ​所以执行原型上的方法,打印3
+
+    // 在第六问中首先看 new Foo().getName() ，这里运算符优先级括号高于new，实际执行为：(new Foo()).getName()
+    // 遂先执行Foo函数，而Foo此时作为构造函数却有返回值。在原题中，返回的是this，而this在构造函数中本来就代表当前实例化对象，遂最终Foo函数返回实例化对象。
+    // 之后调用实例化对象的getName函数，因为在Foo构造函数中没有为实例化对象添加任何属性，遂到当前对象的原型对象（prototype）中寻找getName，找到后输出3。
+
 </script>
 </html>
