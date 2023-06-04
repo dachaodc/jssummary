@@ -2,5 +2,12 @@
   "name": "jssummary",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start:ll": "ts-node src/js/算法/单链表/linkedList.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
 }
