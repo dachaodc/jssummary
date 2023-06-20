@@ -56,12 +56,12 @@ console.log("total-----2>", ar);
 // [-2, 1, -3, 4, -1, 2, 1, -5, 4]; 求出连续子序的最大和；
 
 const getMax = (arr: number[]) => {  
-  let mS: number[] = new Array(arr.length);
-  mS[0] = arr[0];
+  let mA: number[] = new Array(arr.length);
+  mA[0] = arr[0];
   let maxValue: number = 0;
   for (let i = 1; i < arr.length; i++) {
-    mS[i] = Math.max(mS[i - 1] , 0) + arr[i];
-    maxValue = Math.max(maxValue, mS[i]);
+    mA[i] = Math.max(mA[i - 1] , 0) + arr[i];
+    maxValue = Math.max(maxValue, mA[i]);
   }
   return maxValue;
 };
