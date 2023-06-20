@@ -31,7 +31,7 @@ const getItemByNum = (index: number) => {
 
 getItemByNum(10);
 
-// 实现2 递归
+// 实现2 
 function fibonacci(n: number): number[] {
     // 定义动态规划数组 dp，并初始化 dp[0] 和 dp[1] 的值
     const dp: number[] = [0, 1];
