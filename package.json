@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:ll": "ts-node src/js/算法/单链表/linkedList.ts"
+    "start:ll": "ts-node src/js/算法/单链表/linkedList.ts",
+    "start:ls": "ts-node src/js/算法/动态规划/langSub.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
