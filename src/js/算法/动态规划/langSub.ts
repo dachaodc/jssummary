@@ -53,7 +53,7 @@ console.log("total-----2>", ar);
 // 那么状态转移方程即为 dp[i] = max(dp[i-1], 0) + arr[i]。其中若 dp[i-1] 大于 0，则表示以 i-1 结尾的最大子序列和对 dp[i] 有贡献，
 // 否则不考虑 dp[i-1]。最终最大子序列和为 dp 数组中的最大值。
 
-// [-2, 1, -3, 4, -1, 2, 1, -5, 4]; 求出连续子序的最大和；
+//[-5, 6, -3, 6, -7, 6, -10, 3, -1, 6]; 求出连续子序的最大和；
 
 const getMax = (arr: number[]) => {  
   let mA: number[] = new Array(arr.length);
@@ -65,7 +65,7 @@ const getMax = (arr: number[]) => {
   }
   return maxValue;
 };
-const mV = getMax([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+const mV = getMax([-5, 6, -3, 6, -7, 6, -10, 3, -1, 6]);
 console.log("Maximum Subsequence----->", mV);
 
 //例子3：最长公共子序列问题（Longest Common Subsequence，LCS）是求两个字符串中最长公共子序列的问题。
