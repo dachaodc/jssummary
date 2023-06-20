@@ -53,18 +53,21 @@ console.log("total-----2>", ar);
 // 那么状态转移方程即为 dp[i] = max(dp[i-1], 0) + arr[i]。其中若 dp[i-1] 大于 0，则表示以 i-1 结尾的最大子序列和对 dp[i] 有贡献，
 // 否则不考虑 dp[i-1]。最终最大子序列和为 dp 数组中的最大值。
 
-// [-2, 1, -3, 4, -1, 2, 1, -5, 4]; 求出最大和子序；
+// [-2, 1, -3, 4, -1, 2, 1, -5, 4]; 求出连续子序的最大和；
 
-const getMax = (arr: number[]) => {
-    const mS = [];
-    for () {
-
-    }
+const getMax = (arr: number[]) => {  
+  let mS: number[] = new Array(arr.length);
+  mS[0] = arr[0];
+  let maxValue: number = 0;
+  for (let i = 1; i < arr.length; i++) {
+    mS[i] = Math.max(mS[i - 1] , 0) + arr[i];
+    maxValue = Math.max(maxValue, mS[i]);
+  }
+  return maxValue;
 };
-getMax([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+const mV = getMax([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+console.log("Maximum Subsequence----->", mV);
 
-
-//例子3：最长公共子序列问题（Longest Common Subsequence，LCS）是求两个字符串中最长公共子序列的问题。公共子序列不要求连续，只需要在两个字符串中按照顺序出现即可。
+//例子3：最长公共子序列问题（Longest Common Subsequence，LCS）是求两个字符串中最长公共子序列的问题。
+// 公共子序列不要求连续，只需要在两个字符串中按照顺序出现即可。
 // 例如，对于字符串 "ABCDGH" 和 "AEDFHR"，它们的最长公共子序列是 "ADH"。
-
-
