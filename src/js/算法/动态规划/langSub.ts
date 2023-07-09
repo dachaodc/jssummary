@@ -26,7 +26,7 @@ const getItemByNum = (index: number) => {
     pre = total;
     arr.push(total);
   }
-  console.log("total-----1>", arr);
+  // console.log("total-----1>", arr);
 };
 
 getItemByNum(10);
@@ -46,7 +46,7 @@ function fibonacci(n: number): number[] {
 }
 
 const ar = fibonacci(5);
-console.log("total-----2>", ar);
+// console.log("total-----2>", ar);
 
 // 例子2: 假设有一个长度为 n 的数组 arr，如何找到其中最大的子序列和？其中子序列是指原数组中连续的一段数所组成的序列。
 // 可以使用动态规划的思想，定义一个数组 dp，其中 dp[i] 表示以 arr[i] 结尾的最大子序列和，
@@ -55,19 +55,61 @@ console.log("total-----2>", ar);
 
 //[-5, 6, -3, 6, -7, 6, -10, 3, -1, 6]; 求出连续子序的最大和；
 
-const getMax = (arr: number[]) => {  
+const getMax = (arr: number[]) => {
   let mA: number[] = new Array(arr.length);
   mA[0] = arr[0];
   let maxValue: number = 0;
   for (let i = 1; i < arr.length; i++) {
-    mA[i] = Math.max(mA[i - 1] , 0) + arr[i];
+    mA[i] = Math.max(mA[i - 1], 0) + arr[i];
     maxValue = Math.max(maxValue, mA[i]);
   }
   return maxValue;
 };
 const mV = getMax([-5, 6, -3, 6, -7, 6, -10, 3, -1, 6]);
-console.log("Maximum Subsequence----->", mV);
+// console.log("Maximum Subsequence----->", mV);
 
-//例子3：最长公共子序列问题（Longest Common Subsequence，LCS）是求两个字符串中最长公共子序列的问题。
+// 例子3：最长公共子序列问题（Longest Common Subsequence，LCS）是求两个字符串中最长公共子序列的问题。
 // 公共子序列不要求连续，只需要在两个字符串中按照顺序出现即可。
-// 例如，对于字符串 "ABCDGH" 和 "AEDFHR"，它们的最长公共子序列是 "ADH"。
+// 例如，对于字符串 "ABCDEF" 和 "ZYXAAWD"，它们的最长公共子序列是 "AD"。
+
+function lcs(s1: string, s2: string): string {
+  const m = s1.length,
+    n = s2.length;
+  const dp: number[][] = [];
+
+  for (let i = 0; i <= m; i++) {
+    dp[i] = Array(n + 1).fill(0);
+  }
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (s1[i - 1] === s2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+
+        console.log("s1----->", s1[i - 1]);
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  let result = "";
+  let i = m,
+    j = n;
+  while (i > 0 && j > 0) {
+    if (s1[i - 1] === s2[j - 1]) {
+      result = s1[i - 1] + result;
+      i--;
+      j--;
+    } else if (dp[i - 1][j] > dp[i][j - 1]) {
+      i--;
+    } else {
+      j--;
+    }
+  }
+
+  return result;
+}
+
+const r = lcs("ABCDEF", "ZYXAAWD");
+console.log(r);
